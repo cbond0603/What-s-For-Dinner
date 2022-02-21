@@ -9,11 +9,32 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var dinnerImageView: UIImageView!
+    @IBOutlet weak var dinnerButton: UIButton!
+    @IBOutlet weak var dinnerLabel: UILabel!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
+        dinnerLabel.text = ""
+        dinnerImageView.image = UIImage(named: "")
 
+        
+    }
+    
+    @IBAction func dinnerButtonPressed(_ sender: UIButton) {
+        let choicesArray = ["Burgers", "Burritos", "Cobb Salad", "Pepperoni Pizza", "Sushi"]
+        var mealChoice: String
+        
+        repeat{
+            mealChoice = choicesArray.randomElement()!
+        } while mealChoice == dinnerLabel.text
+                    dinnerLabel.text = mealChoice
+        dinnerImageView.image = UIImage(named: mealChoice)
+        
+    }
+    
 
 }
 
